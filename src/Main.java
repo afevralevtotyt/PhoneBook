@@ -1,6 +1,17 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
+
+    public static void add(Map<String,Integer> map, String key, int value){
+        if (!map.containsKey(key)){
+            map.put(key, value);
+        }else if (map.get(key)==value){
+            throw new RuntimeException("Такое значение уже есть в карте");
+        }else{
+            map.put(key,value);
+        }
+    }
     public static void main(String[] args) {
         PhoneBook book1  = new PhoneBook();
 
@@ -26,6 +37,25 @@ public class Main {
         book1.add("Галошин Григорий", "79624228883");
 
         System.out.println(book1.getPhoneBook());
+
+
+
+        Map<String, Integer> map= new HashMap<>();
+
+        map.put("str1", 1);
+        map.put("str2", 2);
+        map.put("str3", 3);
+        map.put("str4", 4);
+        map.put("str5", 5);
+
+        add(map, "str1", 2);
+        add(map, "str6", 6);
+        System.out.println(map);
+
+
+
+
+
 
     }
 }
