@@ -1,7 +1,11 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
+
+    public static void newAdd(String key, Map<String, List<Integer>> list){
+        Random random = new Random();
+        list.put(key, List.of(random.nextInt(1001), random.nextInt(1001),random.nextInt(1001)));
+    }
 
     public static void add(Map<String,Integer> map, String key, int value){
         if (!map.containsKey(key)){
@@ -11,6 +15,15 @@ public class Main {
         }else{
             map.put(key,value);
         }
+    }
+    public static int summ(List<Integer> list){
+        int summ = 0;
+        for (Integer a: list) {
+
+            summ+=a;
+
+        }
+        return summ;
     }
     public static void main(String[] args) {
         PhoneBook book1  = new PhoneBook();
@@ -52,6 +65,45 @@ public class Main {
         add(map, "str6", 6);
         System.out.println(map);
 
+
+        Map <String, List<Integer>> list = new HashMap<>();
+        newAdd("Masha", list);
+        newAdd("Dasha", list);
+        newAdd("Sasha", list);
+        newAdd("Oksasha", list);
+        newAdd("Natasha", list);
+
+        for (Map.Entry entry: list.entrySet()){
+            System.out.println(entry.getKey()+ " -> " + entry.getValue().toString());
+        }
+
+
+        Map<String, Integer> newMap = new HashMap<>();
+
+
+        for (Map.Entry entry: list.entrySet())
+             {
+                 newMap.put((String) entry.getKey(), summ((List<Integer>) entry.getValue()));
+        }
+
+
+        for (Map.Entry entry: newMap.entrySet()){
+            System.out.println(entry.getKey()+ " -> " + entry.getValue().toString());
+        }
+
+        Map<Integer, String> sortedMap = new LinkedHashMap<>();
+
+        sortedMap.put(1, "один");
+        sortedMap.put(3, "два");
+        sortedMap.put(2, "три");
+        sortedMap.put(4, "четыре");
+        sortedMap.put(5, "пять");
+        sortedMap.put(6, "шесть");
+        sortedMap.put(7, "семь");
+        sortedMap.put(8, "восемь");
+        sortedMap.put(9, "девять");
+        sortedMap.put(10, "десять");
+        System.out.println(sortedMap);
 
 
 
